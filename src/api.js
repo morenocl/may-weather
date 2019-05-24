@@ -17,6 +17,7 @@ class Api {
             }).catch(console.log)
         return promise;
     }
+
     getWeather(args) {
         var url = this.url + "/weather?" + "lat=" + this.lat + "&lon=" + this.long + "&APIKEY=" + this.apiKey;
         return this.getJson(url);
@@ -27,8 +28,6 @@ class Api {
         let url = this.url + "/forecast?" + "lat=" + this.lat + "&lon=" + this.long + "&APIKEY=" + this.apiKey;
         return this.getJson(url);
     }
-
-
 
 }
 
