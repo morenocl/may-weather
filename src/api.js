@@ -9,10 +9,6 @@ class Api {
         this.long = longitude;
     };
 
-    getWeather(args) {
-        let url = this.url + "/weather?" + "&lat=" + this.lat + "&lon=" + this.long + "&APIKEY=" + this.apiKey;
-    }
-
     getJson(url){
         const promise = fetch(url).then(res => res.json())
             .then((data) => {
@@ -21,12 +17,17 @@ class Api {
             }).catch(console.log)
         return promise;
     }
+    getWeather(args) {
+        var url = this.url + "/weather?" + "lat=" + this.lat + "&lon=" + this.long + "&APIKEY=" + this.apiKey;
+        return this.getJson(url);
+    }
 
     getForecast(args) {
         // returns the weather of the next 5 days every 3 hours
         let url = this.url + "/forecast?" + "lat=" + this.lat + "&lon=" + this.long + "&APIKEY=" + this.apiKey;
         return this.getJson(url);
     }
+
 
 
 }
