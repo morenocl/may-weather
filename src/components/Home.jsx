@@ -1,4 +1,6 @@
 import React from "react";
+import CurrentContainer from "./CurrentContainer";
+import ForecastContainer from "./ForecastContainer";
 
 class Home extends React.Component{
     constructor(props){
@@ -15,19 +17,24 @@ class Home extends React.Component{
         // hacer fetch
         event.preventDefault();
     }
+    
     handleOnChange(){
         this.setState({value:event.target.value});
     }
 
     render() {
         return(
-            <form onSubmit={this.hanleSubmit}>
-                <input type="text" 
-                placeholder="Enter a City"
-                value ={this.state.value}
-                onChange={this.handleOnChange} />
-                <input type="submit" value="Submit"/>
-            </form>
+            <div>
+                <form onSubmit={this.hanleSubmit}>
+                    <input type="text" 
+                    placeholder="Enter a City"
+                    value ={this.state.value}
+                    onChange={this.handleOnChange} />
+                    <input type="submit" value="Submit"/>
+                </form>
+                <CurrentContainer></CurrentContainer>
+                <ForecastContainer></ForecastContainer>
+            </div>
         );    
     }
 }
