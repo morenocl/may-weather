@@ -6,10 +6,14 @@ class Home extends React.Component{
         this.state = {
             value: "",
         }
+        // need to add this otherwise it dosen work
+        this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     };
 
     handleSubmit(event){
         // hacer fetch
+        event.preventDefault();
     }
     handleOnChange(){
         this.setState({value:event.target.value});
