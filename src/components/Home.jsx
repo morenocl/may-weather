@@ -9,7 +9,6 @@ class Home extends React.Component{
         super(props);
         this.state = {};
         this.api = new Api(-31, -64);
-        console.log(this.api);
     };
 
     render() {
