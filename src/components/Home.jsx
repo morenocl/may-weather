@@ -2,31 +2,34 @@ import React, { Component, Fragment } from "react";
 import CurrentContainer from "./CurrentContainer";
 import ForecastContainer from "./ForecastContainer";
 import Search from "./Search";
-import Api from "../api";
+import Api from "../api"
 
 class Home extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            weather: null,
-            forecast: null,
+            weather: [],
+            forecast: [],
         }
         this.api = new Api(-31, -64);     
-        // console.log(this.state.weather);
     };
 
-    componentDidMount() {
-        this.api.getWeather().then(json => this.setState({weather: JSON.stringify(json)}));
-        this.api.getForecast().then(json => this.setState({forecast: JSON.stringify(json)}));
+    async componentDidMount() {
+        const responseWeather = await this.api.getWeather();
+        const jsonWeather = await responseWeather.json();
+        this.setState({weather: jsonWeather});
+        
+        const responseForecast = await this.api.getForecast();
+        const jsonForecast = await responseForecast.json();
+        this.setState({forecast: jsonForecast});
     }
 
-
     render() {
-        const promise = this.state.weather;
-        const list = ['1','2','3','7','5','9'];
         return(
             <div>
-                { list.map(el => <li>{ el }</li>) }
+
+                { this.state.weather.name }
+
                 <Search></Search>
                 <CurrentContainer></CurrentContainer>
                 <ForecastContainer></ForecastContainer>
