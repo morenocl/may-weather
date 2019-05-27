@@ -36,7 +36,6 @@ class Home extends React.Component{
     render() {
         return(
             <Card className="Home">
-                { this.state.city } 
                 <Search updateCity={this.updateCity}></Search>
                 <Slide data={this.state}></Slide>
             </Card>
