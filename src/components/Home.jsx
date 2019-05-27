@@ -10,14 +10,21 @@ class Home extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            weather: {name: "prueba"},
+            weather: [],
             forecast: [],
             city: 'cordoba',
-            type: 0,
+            loading: false,
         }
         this.api = new Api();
         this.updateCity = this.updateCity.bind(this)
+        this.updateLoading = this.updateLoading.bind(this)
     };
+
+    updateLoading() {
+        this.setState({
+            loading: !this.state.loading,
+        });
+    }
 
     updateCity(newCity) {
         event.preventDefault();
@@ -28,15 +35,17 @@ class Home extends React.Component{
     }
 
     async updateWeather(newCity) {
+        this.updateLoading();
         const responseWeather = await this.api.getWeather(newCity);
         const jsonWeather = await responseWeather.json();
         this.setState({weather: jsonWeather});
+        this.updateLoading();
     }
 
     render() {
         return(
             <Card className="Home">
-                <Search updateCity={this.updateCity}></Search>
+                <Search updateLoading={this.updateLoading} updateCity={this.updateCity}></Search>
                 <Slide data={this.state}></Slide>
             </Card>
         );    

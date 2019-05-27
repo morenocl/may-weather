@@ -45,37 +45,37 @@ function CustomSearch(props) {
   );
 }
 
-class Search extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            search: "",
-        }
-        this.handleOnChange = this.handleOnChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    };
+class Search extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+        search: "",
+    }
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  };
 
-    handleSubmit(event){
-        this.props.updateCity(this.state.search);
-        event.preventDefault();
-    }
-    
-    handleOnChange(){
-        this.setState({search:event.target.value});
-    }
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.updateCity(this.state.search);
+  }
+  
+  handleOnChange(){
+      this.setState({search:event.target.value});
+  }
 
-    render() {
-        return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <CustomSearch 
-                        value={this.state.value}
-                        onChange={this.handleOnChange}
-                    >
-                    </CustomSearch>
-                </form>
-            </div>
-        );    
-    }
+  render() {
+    return(
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <CustomSearch 
+              value={this.state.value}
+              onChange={this.handleOnChange}
+          >
+          </CustomSearch>
+        </form>
+      </div>
+    );    
+  }
 }
 export default Search;

@@ -6,6 +6,7 @@ import { types } from "../settings";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function TabContent(props) {
     return (
@@ -23,7 +24,9 @@ function Slide(props) {
     }
 
     let content;
-    if (value === types.CURRENT) {
+    if (props.data.loading) {
+        content = <CircularProgress />
+    } else if (value === types.CURRENT) {
         content = <CurrentContainer weather={props.data.weather}></CurrentContainer>;
     } else if (value === types.FORECAST) {
         content = <ForecastContainer weather={props.data.weather}></ForecastContainer>;
