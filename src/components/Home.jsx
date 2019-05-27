@@ -1,9 +1,10 @@
 import React from "react";
-import CurrentContainer from "./CurrentContainer";
-import ForecastContainer from "./ForecastContainer";
+
+import Card from '@material-ui/core/Card';
 import Search from "./Search";
-import Api from "../api"
-import { types } from "../settings"
+import Slide from "./Slide";
+import Api from "../api";
+import '../css/home.css';
 
 class Home extends React.Component{
     constructor(props) {
@@ -33,19 +34,12 @@ class Home extends React.Component{
     }
 
     render() {
-        const type = this.state.type;
-        let container;
-        if (type == types.CURRENT) {
-            container = <CurrentContainer weather={this.state.weather}></CurrentContainer>;
-        } else if (type == types.FORECAST) {
-            container = <ForecastContainer></ForecastContainer>
-        }
         return(
-            <div>
+            <Card className="Home">
                 { this.state.city } 
                 <Search updateCity={this.updateCity}></Search>
-                { container }
-            </div>
+                <Slide data={this.state}></Slide>
+            </Card>
         );    
     }
 }

@@ -1,0 +1,16 @@
+html, body {
+    background-color: #EAEAEA!important;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;     /* center items horizontally, in this case */
+    height: 100%;
+}
+
+.Home {
+    min-height: 500px;
+}
+
+.tabContent {
+    padding: 30px;
+}

@@ -1,9 +1,4 @@
 body {
-  /* gradient */
-  /* background: #03001e; 
-  background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  
-  background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -15,4 +10,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.MuiPaper-elevation1 {
+  /* box-shadow: none!important; */
 }
