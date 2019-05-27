@@ -4,7 +4,7 @@ class Search extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            value: "",
+            search: "",
         }
         // need to add this otherwise it dosent work
         this.handleOnChange = this.handleOnChange.bind(this);
@@ -12,11 +12,12 @@ class Search extends React.Component{
     };
 
     handleSubmit(event){
+        this.props.updateCity(this.state.search);
         event.preventDefault();
     }
     
     handleOnChange(){
-        this.setState({value:event.target.value});
+        this.setState({search:event.target.value});
     }
 
     render() {

@@ -11,9 +11,6 @@ class ForecastContainer extends React.Component{
         return(
             <div>
                 <Forecast></Forecast>
-                <Forecast></Forecast>
-                <Forecast></Forecast>
-                <Forecast></Forecast>
             </div>
         );    
     }
