@@ -6,7 +6,7 @@ import { types } from "../settings";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 function TabContent(props) {
     return (
@@ -33,12 +33,14 @@ function Slide(props) {
     }
     return (
         <Box>
+            { props.data.loading && <LinearProgress /> }
             <Tabs value={value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
                 <Tab label="Current"/>
                 <Tab label="Forecast" />
                 <Tab label="UVI" disabled />
             </Tabs>
             <TabContent className="tabContent">
+
                 {content}
             </TabContent>
         </Box>

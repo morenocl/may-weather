@@ -5,7 +5,6 @@ import Search from "./Search";
 import Slide from "./Slide";
 import Api from "../api";
 import '../css/home.css';
-import Switch from '@material-ui/core/Switch';
 
 class Home extends React.Component{
     constructor(props) {
@@ -78,6 +77,7 @@ class Home extends React.Component{
             { this.state.unMount &&
                 <Fade in={checked}>
                     <Card className="Home">
+                        {/* { this.state.loading && <LinearProgress /> } */}
                         <Slide data={this.state}></Slide>
                     </Card>
                 </Fade>

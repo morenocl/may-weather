@@ -1,11 +1,13 @@
 import React from "react";
-import Current from "./Current";
+import CardMedia from '@material-ui/core/CardMedia';
 
 function CurrentContainer(props) {
+    let url = "http://openweathermap.org/img/w/" + props.weather.weather[0].icon + ".png";
     return (
         <div>
             { props.weather.name &&
                 <div>
+                <img src={url} alt="Clima"/>
                 <h2>{props.weather.name}</h2>
                 <p>Humedad: {props.weather.main.humidity}</p>
                 <p>Presion: {props.weather.main.pressure}</p>
