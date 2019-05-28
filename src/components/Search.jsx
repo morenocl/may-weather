@@ -5,6 +5,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
   root: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles({
   },
   iconButton: {
     padding: 10,
+    marginRight: 8,
   },
   divider: {
     width: 1,
@@ -29,7 +31,13 @@ const useStyles = makeStyles({
 
 function CustomSearch(props) {
   const classes = useStyles();
-
+  let icon;
+  if (props.loading) {
+    // icon =  <IconButton className={classes.iconButton} aria-label="Search" type="submit"><SettingsIcon /></IconButton>
+    icon =  <CircularProgress size={24}/>
+  } else {
+    icon = <SearchIcon />
+  }
   return (
     <Paper className={classes.root}>
       <InputBase 
@@ -39,7 +47,7 @@ function CustomSearch(props) {
         placeholder="Ciudad"/>
       <Divider className={classes.divider} />
       <IconButton className={classes.iconButton} aria-label="Search" type="submit">
-        <SearchIcon/>
+        {icon}
       </IconButton>
     </Paper>
   );
@@ -50,10 +58,15 @@ class Search extends React.Component {
     super(props);
     this.state = {
         search: "",
+        loading: props.loading,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({loading: nextProps.loading});
+  }
 
   handleSubmit(event){
     event.preventDefault();
@@ -71,6 +84,7 @@ class Search extends React.Component {
           <CustomSearch 
               value={this.state.value}
               onChange={this.handleOnChange}
+              loading={this.state.loading}
           >
           </CustomSearch>
         </form>

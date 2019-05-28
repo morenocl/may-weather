@@ -24,9 +24,7 @@ function Slide(props) {
     }
 
     let content;
-    if (props.data.loading) {
-        content = <CircularProgress />
-    } else if (value === types.CURRENT) {
+    if (value === types.CURRENT) {
         content = <CurrentContainer weather={props.data.weather}></CurrentContainer>;
     } else if (value === types.FORECAST) {
         content = <ForecastContainer weather={props.data.weather}></ForecastContainer>;

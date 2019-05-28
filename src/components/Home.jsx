@@ -67,13 +67,13 @@ class Home extends React.Component{
         });
     }
     render() {
-        // const checked = this.state.checked;
         const { checked } = this.state;
         return(
             <div>
             <Card className="Search">
                 <Search updateLoading={this.updateLoading} 
-                        updateCity={this.updateCity}></Search>
+                        updateCity={this.updateCity}
+                        loading={this.state.loading}></Search>
             </Card>
             { this.state.unMount &&
                 <Fade in={checked}>
