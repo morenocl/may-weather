@@ -14,3 +14,8 @@ html, body {
 .tabContent {
     padding: 30px;
 }
+
+.Search {
+    margin-bottom: 20px!important;
+    /* min-width: 540px!important; */
+}

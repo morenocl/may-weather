@@ -8,9 +8,6 @@ class Current extends React.Component{
     render() {
         return(
             <div>
-                <h2>
-                    current
-                </h2>
             </div>
         );    
     }

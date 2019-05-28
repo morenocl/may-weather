@@ -1,23 +1,28 @@
 import React from "react";
-
 import Card from '@material-ui/core/Card';
+import Fade from '@material-ui/core/Fade';
 import Search from "./Search";
 import Slide from "./Slide";
 import Api from "../api";
 import '../css/home.css';
+import Switch from '@material-ui/core/Switch';
 
 class Home extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            weather: [],
-            forecast: [],
+            weather: {},
+            forecast: {},
             city: 'cordoba',
             loading: false,
+            checked: false,
+            unMount: false,
         }
         this.api = new Api();
         this.updateCity = this.updateCity.bind(this)
         this.updateLoading = this.updateLoading.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        
     };
 
     updateLoading() {
@@ -38,16 +43,46 @@ class Home extends React.Component{
         this.updateLoading();
         const responseWeather = await this.api.getWeather(newCity);
         const jsonWeather = await responseWeather.json();
-        this.setState({weather: jsonWeather});
+        let check = true, unmount = true;
+        if (jsonWeather.cod == "404") {
+            check = false;
+            unmount = false;
+        }
+        this.setState({ checked: check }, () => {
+            setTimeout(() => {
+                this.setState({ unMount: unmount });
+            }, 200);
+        });
+        
+        this.setState({
+            weather: jsonWeather,
+        });
+
         this.updateLoading();
     }
 
+    handleChange() {
+        this.setState({
+            checked: !this.state.checked,
+        });
+    }
     render() {
+        // const checked = this.state.checked;
+        const { checked } = this.state;
         return(
-            <Card className="Home">
-                <Search updateLoading={this.updateLoading} updateCity={this.updateCity}></Search>
-                <Slide data={this.state}></Slide>
+            <div>
+            <Card className="Search">
+                <Search updateLoading={this.updateLoading} 
+                        updateCity={this.updateCity}></Search>
             </Card>
+            { this.state.unMount &&
+                <Fade in={checked}>
+                    <Card className="Home">
+                        <Slide data={this.state}></Slide>
+                    </Card>
+                </Fade>
+            }
+            </div>
         );    
     }
 }
