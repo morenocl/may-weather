@@ -1,14 +1,21 @@
 html, body {
-    background-color: #EAEAEA!important;
+    /* background-color: #EAEAEA!important; */
     display: flex;           /* establish flex container */
     flex-direction: column;  /* make main axis vertical */
     justify-content: center; /* center items vertically, in this case */
     align-items: center;     /* center items horizontally, in this case */
     height: 100%;
+    
+}
+body {
+    background: #5433FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 }
 
 .Home {
-    min-height: 500px;
+    min-height: 500px;   
 }
 
 .tabContent {

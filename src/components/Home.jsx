@@ -10,7 +10,7 @@ class Home extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            weather: {name: "prueba"},
+            weather: [],
             forecast: [],
             city: 'cordoba',
             type: 0,
