@@ -1,6 +1,7 @@
 import React from "react";
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
+import Box from '@material-ui/core/Box';
 import Search from "./Search";
 import Slide from "./Slide";
 import Api from "../api";
@@ -43,7 +44,7 @@ class Home extends React.Component{
     const jsonWeather = await responseWeather.json();
     let check = true, unmount = true;
     
-    if (jsonWeather.cod == "404") {
+    if (jsonWeather.cod == "400" || jsonWeather.cod == "404") { // Cambiar
       check = false;
       unmount = false;
     }
@@ -69,11 +70,11 @@ class Home extends React.Component{
     const { checked } = this.state;
     return(
       <div>
-      <Card className="Search">
+      <Box className="Search">
         <Search updateLoading={this.updateLoading} 
                 updateCity={this.updateCity}
                 loading={this.state.loading}></Search>
-      </Card>
+      </Box>
       { this.state.unMount &&
         <Fade in={checked}>
           <Card className="Home">

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "css-loader": "^2.1.1",
+    "material-ui-selectfield": "^1.0.24",
     "react": "^16.8.6",
     "react-content-loader": "^4.2.1",
     "react-dom": "^16.8.6",

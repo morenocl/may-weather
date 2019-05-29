@@ -7,26 +7,28 @@ import SearchIcon from '@material-ui/icons/Search';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import '../css/Search.css';
 
-function CustomSearch(props) {
-  let icon;
-  if (props.loading) {
-    icon =  <CircularProgress size={24}/>
-  } else {
-    icon = <SearchIcon />
+class CustomSearch extends React.Component {
+  render() {
+    let icon;
+    if (this.props.loading) {
+      icon =  <CircularProgress size={24}/>
+    } else {
+      icon = <SearchIcon />
+    }
+    return (
+      <Paper className="root">
+        <InputBase 
+          className="input" 
+          value={this.props.value} 
+          onChange={this.props.onChange}
+          placeholder="Ciudad"/>
+        <Divider className="divider" />
+        <IconButton className="iconButton" aria-label="Search" type="submit">
+          {icon}
+        </IconButton>
+      </Paper>
+    );
   }
-  return (
-    <Paper className="root">
-      <InputBase 
-        className="input" 
-        value={props.value} 
-        onChange={props.onChange}
-        placeholder="Ciudad"/>
-      <Divider className="divider" />
-      <IconButton className="iconButton" aria-label="Search" type="submit">
-        {icon}
-      </IconButton>
-    </Paper>
-  );
 }
 
 class Search extends React.Component {
@@ -41,7 +43,6 @@ class Search extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.loading);
     this.setState({loading: nextProps.loading});
   }
 
