@@ -1,16 +1,9 @@
 import React from "react";
 
-class Forecast extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {}
-  };
-
-  render() {
-    return(
-      <div>forecast</div>
-    );
-  }
+function Forecast(props){
+  return(
+    <div>forecast: {props.forecast.city.name}</div>
+  );
 }
 
 export default Forecast;
