@@ -25,7 +25,9 @@ function Slide(props) {
 
     let content;
     if (value === types.CURRENT) {
-        content = <CurrentContainer weather={props.data.weather}></CurrentContainer>;
+        content = <CurrentContainer loading={props.data.loading} 
+                                    weather={props.data.weather}>
+                  </CurrentContainer>;
     } else if (value === types.FORECAST) {
         content = <ForecastContainer weather={props.data.weather}></ForecastContainer>;
     } else if (value === types.UVI) {
