@@ -33,7 +33,6 @@ function CustomSearch(props) {
   const classes = useStyles();
   let icon;
   if (props.loading) {
-    // icon =  <IconButton className={classes.iconButton} aria-label="Search" type="submit"><SettingsIcon /></IconButton>
     icon =  <CircularProgress size={24}/>
   } else {
     icon = <SearchIcon />
@@ -57,24 +56,25 @@ class Search extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-        search: "",
-        loading: props.loading,
+      search: "",
+      loading: props.loading,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.loading);
     this.setState({loading: nextProps.loading});
   }
 
   handleSubmit(event){
-    event.preventDefault();
-    this.props.updateCity(this.state.search);
+    event.preventDefault();                       // Bloquea redireccion
+    this.props.updateCity(this.state.search); 
   }
   
   handleOnChange(){
-      this.setState({search:event.target.value});
+    this.setState({search:event.target.value});
   }
 
   render() {
@@ -82,9 +82,9 @@ class Search extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <CustomSearch 
-              value={this.state.value}
-              onChange={this.handleOnChange}
-              loading={this.state.loading}
+            value={this.state.value}
+            onChange={this.handleOnChange}
+            loading={this.state.loading}
           >
           </CustomSearch>
         </form>
@@ -92,4 +92,5 @@ class Search extends React.Component {
     );    
   }
 }
+
 export default Search;
