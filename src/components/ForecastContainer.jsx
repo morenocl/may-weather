@@ -1,19 +1,12 @@
 import React from "react";
 import Forecast from "./Forecast";
 
-class ForecastContainer extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {}
-  };
-
-  render() {
-    return(
-      <div>
-        <Forecast></Forecast>
-      </div>
-    );
-  }
+function ForecastContainer(prop) {
+  return(
+    <div>
+      <Forecast forecast={prop.forecast}/>
+    </div>
+  );
 }
 
 export default ForecastContainer;

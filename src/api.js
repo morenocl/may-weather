@@ -11,12 +11,11 @@ class Api {
 
     getWeather(city) {
         var url = this.url + "/weather?q=" + city + "&APIKEY=" + this.apiKey + "&lang=" + lang + "&units=metric";
-        console.log(url);
         return fetch(url);
     }
 
     getForecast(city) {
-        let url = this.url + "/forecast?" + city + "&APIKEY=" + this.apiKey + "&lang=" + lang;
+        let url = this.url + "/forecast?q=" + city + "&APIKEY=" + this.apiKey + "&lang=" + lang + "&units=metric";
         return fetch(url);
     }
 

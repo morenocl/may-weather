@@ -41,7 +41,9 @@ class Home extends React.Component{
   async updateWeather(newCity) {
     this.updateLoading();
     const responseWeather = await this.api.getWeather(newCity);
+    const responseForecast = await this.api.getForecast(newCity);
     const jsonWeather = await responseWeather.json();
+    const jsonForecast = await responseForecast.json();
     let check = true, unmount = true;
     
     if (jsonWeather.cod == "400" || jsonWeather.cod == "404") { // Cambiar
@@ -56,6 +58,7 @@ class Home extends React.Component{
     
     this.setState({
       weather: jsonWeather,
+      forecast: jsonForecast,
     });
 
     this.updateLoading();
