@@ -1,36 +1,13 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
-const useStyles = makeStyles({
-  root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    width: "100%",
-  },
-  input: {
-    marginLeft: 8,
-    flex: 1,
-  },
-  iconButton: {
-    padding: 10,
-    marginRight: 8,
-  },
-  divider: {
-    width: 1,
-    height: 28,
-    margin: 4,
-  },
-});
+import '../css/Search.css';
 
 function CustomSearch(props) {
-  const classes = useStyles();
   let icon;
   if (props.loading) {
     icon =  <CircularProgress size={24}/>
@@ -38,14 +15,14 @@ function CustomSearch(props) {
     icon = <SearchIcon />
   }
   return (
-    <Paper className={classes.root}>
+    <Paper className="root">
       <InputBase 
-        className={classes.input} 
+        className="input" 
         value={props.value} 
         onChange={props.onChange}
         placeholder="Ciudad"/>
-      <Divider className={classes.divider} />
-      <IconButton className={classes.iconButton} aria-label="Search" type="submit">
+      <Divider className="divider" />
+      <IconButton className="iconButton" aria-label="Search" type="submit">
         {icon}
       </IconButton>
     </Paper>

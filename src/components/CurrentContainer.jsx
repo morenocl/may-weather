@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader"
 import Current from "./Current"
 
-const MyLoader = () => (
+const CurrentLoader = () => (
   <ContentLoader 
     height={160}
     width={400}
@@ -22,7 +22,7 @@ const MyLoader = () => (
 function CurrentContainer(props) {
   let content;
   if (props.loading) {
-    content = <MyLoader />;
+    content = <CurrentLoader />;
   } else if (props.weather.name) {
     content = <Current weather={props.weather}/>;
   }
