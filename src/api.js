@@ -21,8 +21,7 @@ class Api {
 
     find(city) {
         let url = this.url + "/find?q=" + city + "&APIKEY=" + this.apiKey + "&lang=" + lang;
-        let json = fetch(url);
-        console.log(url);
+        return fetch(url);
     }
 
 }

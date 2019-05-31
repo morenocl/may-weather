@@ -5,12 +5,10 @@ html, body {
     justify-content: center; /* center items vertically, in this case */
     align-items: center;     /* center items horizontally, in this case */
     height: 100%;
-    
 }
+
 body {
-    /* background: #5433FF;
-    background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);
-    background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);   */
+    width: 100%;
 }
 
 .Home {
@@ -23,5 +21,16 @@ body {
 
 .Search {
     margin-bottom: 20px!important;
-    /* min-width: 540px!important; */
+    min-width: 300px!important;
+    width: 100%!important;
+}
+
+.MuiButtonBase-root .tab{
+    width: 33.3333%;
+}
+
+@media only screen and (max-width: 700px) {
+    #root {
+      width: 95%!important;
+    }
 }
