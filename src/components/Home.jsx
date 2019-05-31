@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
-import Search from "./Search";
-import Slide from "./Slide";
-import Api from "../api";
+import CardMedia from '@material-ui/core/CardMedia';
+import Search from './Search';
+import Slide from './Slide';
+import Api from '../api';
 import '../css/home.css';
+// import logo from '../img/logo.png'; // Tell Webpack this JS file uses this image
 
-class Home extends React.Component{
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,22 +18,20 @@ class Home extends React.Component{
       city: '',
       loading: false,
       checked: false,
-      unMount: false,     // Renderizar informacion
-    }
-    this.api = new Api();
-    this.updateCity = this.updateCity.bind(this)
-    this.updateLoading = this.updateLoading.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  };
+      unMount: false, // Renderizar informacion
+    };
+    this.updateCity = this.updateCity.bind(this);
+    this.updateLoading = this.updateLoading.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   updateLoading() {
     this.setState({
-        loading: !this.state.loading,
+      loading: !this.state.loading,
     });
   }
 
   updateCity(newCity) {
-    // event.preventDefault();
     this.setState({
       city: newCity,
     });
@@ -40,22 +40,25 @@ class Home extends React.Component{
 
   async updateWeather(newCity) {
     this.updateLoading();
-    const responseWeather = await this.api.getWeather(newCity);
-    const responseForecast = await this.api.getForecast(newCity);
+    const api = new Api();
+    const responseWeather = await api.getWeather(newCity);
+    const responseForecast = await api.getForecast(newCity);
     const jsonWeather = await responseWeather.json();
     const jsonForecast = await responseForecast.json();
-    let check = true, unmount = true;
-    
-    if (jsonWeather.cod == "400" || jsonWeather.cod == "404") { // Cambiar
+    let check = true; let
+      unmount = true;
+
+    if (jsonWeather.cod == '400' || jsonWeather.cod == '404') { // Cambiar
       check = false;
       unmount = false;
     }
+
     this.setState({ checked: check }, () => {
       setTimeout(() => {
         this.setState({ unMount: unmount });
       }, 200);
     });
-    
+
     this.setState({
       weather: jsonWeather,
       forecast: jsonForecast,
@@ -69,25 +72,38 @@ class Home extends React.Component{
       checked: !this.state.checked,
     });
   }
+
   render() {
     const { checked } = this.state;
-    return(
+    return (
       <div>
-      <Box className="Search">
-        <Search updateLoading={this.updateLoading} 
-                updateCity={this.updateCity}
-                loading={this.state.loading}
-                api={this.api}></Search>
-      </Box>
-      { this.state.unMount &&
+        <Box className="logo">
+          <img src="https://static1.squarespace.com/static/5931d6a5b8a79b4f41d4eba6/t/593998c829687fc903474f9d/1551899707003/" alt="queonda"/>
+          {/* <CardMedia
+            image={logo}
+            title="Contemplative Reptile"
+            // className={classes.media}
+          /> */}
+        </Box>
+        <Box className="Search">
+          <Search
+            updateLoading={this.updateLoading}
+            updateCity={this.updateCity}
+            loading={this.state.loading}
+          />
+        </Box>
+        { this.state.unMount
+        && (
         <Fade in={checked}>
           <Card className="Home">
-            <Slide data={this.state}></Slide>
+            <Slide data={this.state} />
           </Card>
         </Fade>
+        )
       }
       </div>
-    );    
+    );
   }
 }
+
 export default Home;
