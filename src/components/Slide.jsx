@@ -7,10 +7,10 @@ import CurrentContainer from './CurrentContainer';
 import ForecastContainer from './ForecastContainer';
 import { types } from '../settings';
 
-function TabContent(props) {
+function TabContent({children}) {
   return (
     <div className="tabContent">
-      {props.children}
+      {children}
     </div>
   );
 }
@@ -39,9 +39,9 @@ function Slide(props) {
     <Box>
       { props.data.loading && <LinearProgress /> }
       <Tabs value={value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
-        <Tab label="Current" />
-        <Tab label="Forecast" />
-        <Tab label="UVI" disabled />
+        <Tab className="tab" label="Current" />
+        <Tab className="tab" label="Forecast" />
+        <Tab className="tab" label="UVI" disabled />
       </Tabs>
       <TabContent className="tabContent">
         {content}

@@ -41,6 +41,6 @@ module.exports = {
   devServer: {
     contentBase: __dirname + '/public',
     inline: true,
-    hot: true
+    hot: true,
   }
 };

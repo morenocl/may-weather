@@ -2,6 +2,8 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import Search from './Search';
 import Slide from './Slide';
 import Api from '../api';
@@ -18,7 +20,6 @@ class Home extends React.Component {
       checked: false,
       unMount: false, // Renderizar informacion
     };
-    this.api = new Api();
     this.updateCity = this.updateCity.bind(this);
     this.updateLoading = this.updateLoading.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +32,6 @@ class Home extends React.Component {
   }
 
   updateCity(newCity) {
-    // event.preventDefault();
     this.setState({
       city: newCity,
     });
@@ -40,8 +40,9 @@ class Home extends React.Component {
 
   async updateWeather(newCity) {
     this.updateLoading();
-    const responseWeather = await this.api.getWeather(newCity);
-    const responseForecast = await this.api.getForecast(newCity);
+    const api = new Api();
+    const responseWeather = await api.getWeather(newCity);
+    const responseForecast = await api.getForecast(newCity);
     const jsonWeather = await responseWeather.json();
     const jsonForecast = await responseForecast.json();
     let check = true; let
@@ -51,6 +52,7 @@ class Home extends React.Component {
       check = false;
       unmount = false;
     }
+
     this.setState({ checked: check }, () => {
       setTimeout(() => {
         this.setState({ unMount: unmount });
@@ -75,6 +77,14 @@ class Home extends React.Component {
     const { checked } = this.state;
     return (
       <div>
+        <Box className="logo">
+          {/* <img src="https://static1.squarespace.com/static/5931d6a5b8a79b4f41d4eba6/t/593998c829687fc903474f9d/1551899707003/" alt="logo"/> */}
+            <CardMedia
+              className="media"
+              image="https://static1.squarespace.com/static/5931d6a5b8a79b4f41d4eba6/t/593998c829687fc903474f9d/1551899707003/"
+              title="Contemplative Reptile"
+            />
+        </Box>
         <Box className="Search">
           <Search
             updateLoading={this.updateLoading}
@@ -95,4 +105,5 @@ class Home extends React.Component {
     );
   }
 }
+
 export default Home;
