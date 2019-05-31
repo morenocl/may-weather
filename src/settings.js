@@ -4,4 +4,8 @@ const types = {
     UVI: 2,
 }
 
-export { types };
+const days = ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'];
+
+const urlImg = "http://openweathermap.org/img/w/";
+
+export { types, days, urlImg };

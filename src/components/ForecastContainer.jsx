@@ -18,7 +18,7 @@ const styles = theme => ({
 
 function ForecastContainer(prop) {
   return(
-    <Grid container spacing={3}>
+    <Grid container spacing={2}>
       <Forecast list={prop.forecast.list} index={1} />
       <Forecast list={prop.forecast.list} index={2} />
       <Forecast list={prop.forecast.list} index={3} />
