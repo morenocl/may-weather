@@ -29,6 +29,13 @@ body {
     width: 33.3333%;
 }
 
+.media {
+    max-width: 100%;
+    width: 526px;
+    margin-bottom: 15px;
+    height: 159px;
+}
+
 @media only screen and (max-width: 700px) {
     #root {
       width: 95%!important;
