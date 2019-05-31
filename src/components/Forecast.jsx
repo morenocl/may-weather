@@ -1,4 +1,7 @@
 import React from "react";
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import '../css/forecast.css';
 
 const days = ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB']
 
@@ -20,12 +23,15 @@ function Forecast(prop){
   let fecha = date.getDate() + '/' + (date.getMonth() + 1);
   let url = "http://openweathermap.org/img/w/" + today[3].weather[0].icon + ".png";
   
-  return(<div className="forecastCard">
-    <p> { days[day] } </p>
-    <p> { fecha } </p>
-    <img src={url} alt="Clima"/>
-    <p>{max}°C {min}°C</p>
-    </div>
+  return(
+    <Grid item sm>
+      <Paper className="gridItem">
+        <p> { days[day] } </p>
+        <p> { fecha } </p>
+        <img src={url} alt="Clima"/>
+        <p>{Math.round(max)}°C {Math.round(min)}°C</p>
+      </Paper>
+    </Grid>
   );
 }
 
