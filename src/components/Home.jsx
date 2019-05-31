@@ -76,7 +76,8 @@ class Home extends React.Component{
       <Box className="Search">
         <Search updateLoading={this.updateLoading} 
                 updateCity={this.updateCity}
-                loading={this.state.loading}></Search>
+                loading={this.state.loading}
+                api={this.api}></Search>
       </Box>
       { this.state.unMount &&
         <Fade in={checked}>
