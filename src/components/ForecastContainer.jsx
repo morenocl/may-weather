@@ -1,7 +1,7 @@
-import React from "react";
-import Forecast from "./Forecast";
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Forecast from './Forecast';
 
 const styles = theme => ({
   root: {
@@ -17,7 +17,7 @@ const styles = theme => ({
 });
 
 function ForecastContainer(prop) {
-  return(
+  return (
     <Grid container spacing={2}>
       <Forecast list={prop.forecast.list} index={1} />
       <Forecast list={prop.forecast.list} index={2} />

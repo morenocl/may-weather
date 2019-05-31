@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import CurrentContainer from "./CurrentContainer";
-import ForecastContainer from "./ForecastContainer";
-import { types } from "../settings";
+import CurrentContainer from './CurrentContainer';
+import ForecastContainer from './ForecastContainer';
+import { types } from '../settings';
 
 function TabContent(props) {
   return (
     <div className="tabContent">
-    {props.children}
+      {props.children}
     </div>
   );
 }
@@ -24,12 +24,14 @@ function Slide(props) {
 
   let content;
   if (value === types.CURRENT) {
-    content = <CurrentContainer 
-                loading={props.data.loading} 
-                weather={props.data.weather}>
-              </CurrentContainer>;
+    content = (
+      <CurrentContainer
+        loading={props.data.loading}
+        weather={props.data.weather}
+      />
+    );
   } else if (value === types.FORECAST) {
-    content = <ForecastContainer forecast={props.data.forecast}></ForecastContainer>;
+    content = <ForecastContainer forecast={props.data.forecast} />;
   } else if (value === types.UVI) {
     content = <div>UVI IN PROCESS</div>;
   }
@@ -37,7 +39,7 @@ function Slide(props) {
     <Box>
       { props.data.loading && <LinearProgress /> }
       <Tabs value={value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
-        <Tab label="Current"/>
+        <Tab label="Current" />
         <Tab label="Forecast" />
         <Tab label="UVI" disabled />
       </Tabs>

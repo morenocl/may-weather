@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
-import Search from "./Search";
-import Slide from "./Slide";
-import Api from "../api";
+import Search from './Search';
+import Slide from './Slide';
+import Api from '../api';
 import '../css/home.css';
 
-class Home extends React.Component{
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,17 +16,17 @@ class Home extends React.Component{
       city: '',
       loading: false,
       checked: false,
-      unMount: false,     // Renderizar informacion
-    }
+      unMount: false, // Renderizar informacion
+    };
     this.api = new Api();
-    this.updateCity = this.updateCity.bind(this)
-    this.updateLoading = this.updateLoading.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  };
+    this.updateCity = this.updateCity.bind(this);
+    this.updateLoading = this.updateLoading.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   updateLoading() {
     this.setState({
-        loading: !this.state.loading,
+      loading: !this.state.loading,
     });
   }
 
@@ -44,9 +44,10 @@ class Home extends React.Component{
     const responseForecast = await this.api.getForecast(newCity);
     const jsonWeather = await responseWeather.json();
     const jsonForecast = await responseForecast.json();
-    let check = true, unmount = true;
-    
-    if (jsonWeather.cod == "400" || jsonWeather.cod == "404") { // Cambiar
+    let check = true; let
+      unmount = true;
+
+    if (jsonWeather.cod == '400' || jsonWeather.cod == '404') { // Cambiar
       check = false;
       unmount = false;
     }
@@ -55,7 +56,7 @@ class Home extends React.Component{
         this.setState({ unMount: unmount });
       }, 200);
     });
-    
+
     this.setState({
       weather: jsonWeather,
       forecast: jsonForecast,
@@ -69,24 +70,29 @@ class Home extends React.Component{
       checked: !this.state.checked,
     });
   }
+
   render() {
     const { checked } = this.state;
-    return(
+    return (
       <div>
-      <Box className="Search">
-        <Search updateLoading={this.updateLoading} 
-                updateCity={this.updateCity}
-                loading={this.state.loading}></Search>
-      </Box>
-      { this.state.unMount &&
+        <Box className="Search">
+          <Search
+            updateLoading={this.updateLoading}
+            updateCity={this.updateCity}
+            loading={this.state.loading}
+          />
+        </Box>
+        { this.state.unMount
+        && (
         <Fade in={checked}>
           <Card className="Home">
-            <Slide data={this.state}></Slide>
+            <Slide data={this.state} />
           </Card>
         </Fade>
+        )
       }
       </div>
-    );    
+    );
   }
 }
 export default Home;
