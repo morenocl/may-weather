@@ -13,8 +13,10 @@ function Current(props) {
         justify="space-evenly"
         alignItems="stretch"
       >
-        <Grid item xs={3}>
+        <Grid className="cityName" item xs={12}>
           <h1>{props.weather.name}</h1>
+        </Grid>
+        <Grid item xs={3}>
           <img src={urlIcon} alt="Clima" />
           <h2>{props.weather.main.temp} C</h2>
         </Grid>

@@ -14,17 +14,16 @@ class Home extends React.Component {
     this.state = {
       weather: {},
       forecast: {},
-      city: '',
       loading: false,
       checked: false,
-      unMount: false, // Renderizar informacion
+      unMount: false,
     };
     this.updateCity = this.updateCity.bind(this);
-    this.updateLoading = this.updateLoading.bind(this);
+    this.shiftLoading = this.shiftLoading.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  updateLoading() {
+  shiftLoading() {
     this.setState({
       loading: !this.state.loading,
     });
@@ -38,17 +37,17 @@ class Home extends React.Component {
   }
 
   async updateWeather(newCity) {
-    this.updateLoading();
+    this.shiftLoading();
     const api = new Api();
     const responseWeather = await api.getWeather(newCity);
     const responseForecast = await api.getForecast(newCity);
     const jsonWeather = await responseWeather.json();
     const jsonForecast = await responseForecast.json();
-    let check = true; let
-      unmount = true;
+    let check = true;
+    let unmount = true;
 
     if ('400' <= jsonWeather.cod && jsonWeather.cod < '500') { 
-      var variant = "error";
+      const variant = 'error';
       this.props.enqueueSnackbar('City does not exist!', { variant });
       check = false;
       unmount = false;
@@ -65,7 +64,7 @@ class Home extends React.Component {
       forecast: jsonForecast,
     });
 
-    this.updateLoading();
+    this.shiftLoading();
   }
 
   handleChange() {
@@ -83,7 +82,7 @@ class Home extends React.Component {
         </Box>
         <Box className="Search">
           <Search
-            updateLoading={this.updateLoading}
+            shiftLoading={this.shiftLoading}
             updateCity={this.updateCity}
             loading={this.state.loading}
           />
