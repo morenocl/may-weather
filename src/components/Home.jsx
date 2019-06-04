@@ -2,10 +2,13 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
+import { SnackbarProvider, withSnackbar } from 'notistack';
 import Search from './Search';
 import Slide from './Slide';
 import Api from '../api';
 import '../css/home.css';
+
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -46,7 +49,9 @@ class Home extends React.Component {
     let check = true; let
       unmount = true;
 
-    if (jsonWeather.cod === '400' || jsonWeather.cod === '404') { // Cambiar
+    if (jsonWeather.cod === '400' || jsonWeather.cod === '404') { 
+      var status = "error";
+      this.props.enqueueSnackbar('City does not exist!', { status });
       check = false;
       unmount = false;
     }
@@ -99,4 +104,12 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const App = withSnackbar(Home);
+
+export default function IntegrationNotistack() {
+  return (
+    <SnackbarProvider maxSnack={3}>
+      <App />
+    </SnackbarProvider>
+  );
+}
