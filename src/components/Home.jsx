@@ -8,8 +8,6 @@ import Slide from './Slide';
 import Api from '../api';
 import '../css/home.css';
 
-
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -49,9 +47,9 @@ class Home extends React.Component {
     let check = true; let
       unmount = true;
 
-    if (jsonWeather.cod === '400' || jsonWeather.cod === '404') { 
-      var status = "error";
-      this.props.enqueueSnackbar('City does not exist!', { status });
+    if ('400' <= jsonWeather.cod && jsonWeather.cod < '500') { 
+      var variant = "error";
+      this.props.enqueueSnackbar('City does not exist!', { variant });
       check = false;
       unmount = false;
     }
