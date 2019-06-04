@@ -3,6 +3,7 @@ const webpack = require("webpack");
 module.exports = {
   entry: './src/index.js',
   module: {
+    
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -23,7 +24,8 @@ module.exports = {
           // Inline images smaller than 10kb as data URIs
           limit: 10000
         }
-      }
+      },
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
   },
   resolve: {

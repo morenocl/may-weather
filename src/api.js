@@ -11,6 +11,7 @@ class Api {
 
     getWeather(city) {
         var url = this.url + "/weather?q=" + city + "&APIKEY=" + this.apiKey + "&lang=" + lang + "&units=metric";
+        console.log(url);
         return fetch(url);
     }
 

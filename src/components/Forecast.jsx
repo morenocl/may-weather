@@ -4,10 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import '../css/forecast.css';
 import { days, urlImg } from '../settings.js';
 
-function Forecast(prop) {
+function Forecast(props) {
   // today contiene el datallado cada 3 horas del dia.
-  const today = prop.list.filter(
-    ele => (new Date(Number(ele.dt) * 1000)).getDay() === ((new Date()).getDay() + prop.index) % 7,
+  const today = props.list.filter(
+    ele => (new Date(Number(ele.dt) * 1000)).getDay() === ((new Date()).getDay() + props.index) % 7,
   );
   // Calculo de temp max y min del dia.
   let max = -99;
@@ -20,7 +20,7 @@ function Forecast(prop) {
   const date = (new Date(Number(today[0].dt) * 1000));
   const day = date.getDay();
   const fecha = `${date.getDate()}/${date.getMonth() + 1}`;
-  const url = `${urlImg + today[3].weather[0].icon}.png`;
+  // const url = `${urlImg + today[3].weather[0].icon}.png`;
 
   return (
     <Grid item sm>
@@ -35,7 +35,7 @@ function Forecast(prop) {
           { fecha }
           {' '}
         </p>
-        <img src={url} alt="Clima" />
+        {/* <img src={url} alt="Clima" /> */}
         <p>
           {Math.round(max)}
 °C

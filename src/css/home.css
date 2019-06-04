@@ -1,8 +1,8 @@
 html, body {
     background-color: #EAEAEA!important;
-    display: flex;           /* establish flex container */
-    flex-direction: column;  /* make main axis vertical */
-    justify-content: center; /* center items vertically, in this case */
+    display: flex;
+    /* flex-direction: column; //make main axis vertical */
+    justify-content: center; /*center items vertically, in this case*/
     align-items: center;     /* center items horizontally, in this case */
     height: 100%;
 }
@@ -12,11 +12,11 @@ body {
 }
 
 .Home {
-    min-height: 500px;   
+    min-height: 400px;   
 }
 
 .tabContent {
-    padding: 30px;
+    padding-top: 30px;
 }
 
 .tab {
@@ -38,6 +38,11 @@ body {
     width: 526px;
     margin-bottom: 15px;
     height: 159px;
+}
+
+.logo {
+    min-width: 650px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 700px) {
