@@ -19,6 +19,20 @@ function promiseOptions(inputValue) {
   });
 }
 
+const AsyncSelectStyle = {
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? 'red' : 'white',
+    backgroundColor: state.isFocused ? '#444a4c' : '#2d3436',
+  }),
+  singleValue: (provided, state) => {
+    const opacity = state.isDisabled ? 0.5 : 1;
+    const transition = 'opacity 300ms';
+
+    return { ...provided, opacity, transition };
+  }
+}
+
 function CustomSearch(props) {
   let icon;
   if (props.loading) {
@@ -35,6 +49,7 @@ function CustomSearch(props) {
         loadOptions={promiseOptions}
         cacheOptions
         defaultOptions
+        styles={AsyncSelectStyle}
       />
       <Divider />
       <IconButton className="iconButton" aria-label="Search" type="submit">

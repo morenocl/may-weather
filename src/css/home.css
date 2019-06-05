@@ -50,6 +50,11 @@ body {
     text-align: center;
 }
 
+.css-26l3qy-menu {
+    background-color:#2d3436!important;
+    color: white!important;
+}
+
 @media only screen and (max-width: 700px) {
     #root {
       width: 95%!important;
