@@ -9,15 +9,11 @@ npm i @babel/preset-env @babel/plugin-transform-runtime @babel/runtime --save-de
 npm i css-loader style-loader --save-dev
 
 ```
+## Diseño 
 
-## 
+![jerarquíaComponentes](/diagramas/arbolComponentes.png)
 
 
-## Componenetes 
-
-hacer un grafico de la estructura de la página web 
-
-## Api
 
 
 
