@@ -24,8 +24,9 @@ class Home extends React.Component {
   }
 
   shiftLoading() {
+    const { loading } = this.state;
     this.setState({
-      loading: !this.state.loading,
+      loading: !loading,
     });
   }
 
@@ -37,6 +38,7 @@ class Home extends React.Component {
   }
 
   async updateWeather(newCity) {
+    const { enqueueSnackbar } = this.props;
     this.shiftLoading();
     const api = new Api();
     const responseWeather = await api.getWeather(newCity);
@@ -48,7 +50,7 @@ class Home extends React.Component {
 
     if (jsonWeather.cod >= '400' && jsonWeather.cod < '500') {
       const variant = 'error';
-      this.props.enqueueSnackbar('City does not exist!', { variant });
+      enqueueSnackbar('City does not exist!', { variant });
       check = false;
       unmount = false;
     }
@@ -68,13 +70,14 @@ class Home extends React.Component {
   }
 
   handleChange() {
+    const { checked } = this.state;
     this.setState({
-      checked: !this.state.checked,
+      checked: !checked,
     });
   }
 
   render() {
-    const { checked } = this.state;
+    const { checked, loading, unMount } = this.state;
     return (
       <div>
         <Box className="logo">
@@ -82,20 +85,19 @@ class Home extends React.Component {
         </Box>
         <Box className="Search">
           <Search
-            shiftLoading={this.shiftLoading}
             updateCity={this.updateCity}
-            loading={this.state.loading}
+            loading={loading}
           />
         </Box>
-        { this.state.unMount
+        { unMount
         && (
         <Fade in={checked}>
           <Card className="Home">
-            <Slide data={this.state} />
+            <Slide {...this.state} />
           </Card>
         </Fade>
         )
-      }
+        }
       </div>
     );
   }

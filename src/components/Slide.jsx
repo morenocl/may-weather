@@ -41,23 +41,23 @@ function Slide(props) {
   }
 
   let content;
-  if (props.data.loading) {
+  if (props.loading) {
     content = <Loader />;
   } else if (value === types.CURRENT) {
     content = (
       <CurrentContainer
-        loading={props.data.loading}
-        weather={props.data.weather}
+        loading={props.loading}
+        weather={props.weather}
       />
     );
   } else if (value === types.FORECAST) {
-    content = <ForecastContainer forecast={props.data.forecast} />;
+    content = <ForecastContainer forecast={props.forecast} />;
   } else if (value === types.UVI) {
     content = <div>UVI IN PROCESS</div>;
   }
   return (
     <Box>
-      { props.data.loading && <LinearProgress /> }
+      { props.loading && <LinearProgress /> }
       <Tabs value={value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
         <Tab className="tab" label="Current" />
         <Tab className="tab" label="Forecast" />
