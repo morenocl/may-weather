@@ -30,8 +30,8 @@ const AsyncSelectStyle = {
     const transition = 'opacity 300ms';
 
     return { ...provided, opacity, transition };
-  }
-}
+  },
+};
 
 function CustomSearch(props) {
   let icon;
