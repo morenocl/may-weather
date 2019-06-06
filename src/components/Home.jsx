@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
 import { SnackbarProvider, withSnackbar } from 'notistack';
+import { urlImgLogo } from '../settings';
 import Search from './Search';
 import Slide from './Slide';
 import Api from '../api';
@@ -81,7 +83,7 @@ class Home extends React.Component {
     return (
       <div>
         <Box className="logo">
-          <img src="https://static1.squarespace.com/static/5931d6a5b8a79b4f41d4eba6/t/593998c829687fc903474f9d/1551899707003/" alt="logo" className="media" />
+          <img src={urlImgLogo} alt="logo" className="media" />
         </Box>
         <Box className="Search">
           <Search
@@ -102,6 +104,10 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  enqueueSnackbar: PropTypes.func.isRequired,
+};
 
 const App = withSnackbar(Home);
 
