@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import '../css/forecast.css';
 import { days, urlImg } from '../settings';
 
 function Forecast(props) {
+  const { list, index } = props;
   // today contiene el datallado cada 3 horas del dia.
-  const today = props.list.filter(
-    ele => (new Date(Number(ele.dt) * 1000)).getDay() === ((new Date()).getDay() + props.index) % 7,
+  const today = list.filter(
+    ele => (new Date(Number(ele.dt) * 1000)).getDay() === ((new Date()).getDay() + index) % 7,
   );
   // Calculo de temp max y min del dia.
   let max = -99;
@@ -47,5 +49,10 @@ function Forecast(props) {
     </Grid>
   );
 }
+
+Forecast.propTypes = {
+  index: PropTypes.number.isRequired,
+  list: PropTypes.object.isRequired,
+};
 
 export default Forecast;
