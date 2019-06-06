@@ -20,7 +20,7 @@ function Forecast(props) {
   const date = (new Date(Number(today[0].dt) * 1000));
   const day = date.getDay();
   const fecha = `${date.getDate()}/${date.getMonth() + 1}`;
-  // const url = `${urlImg + today[3].weather[0].icon}.png`;
+  const url = `${urlImg + today[3].weather[0].icon}.png`;
 
   return (
     <Grid item sm>
@@ -35,7 +35,7 @@ function Forecast(props) {
           { fecha }
           {' '}
         </p>
-        {/* <img src={url} alt="Clima" /> */}
+        { <img src={url} alt="Clima" /> }
         <p>
           {Math.round(max)}
 °C
