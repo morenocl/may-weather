@@ -18,17 +18,40 @@ function Current(props) {
         </Grid>
         <Grid item xs={3}>
           <img src={urlIcon} alt="Clima" />
-          <h2>{props.weather.main.temp} C</h2>
+          <h2>
+            {props.weather.main.temp}
+            {' '}
+C°
+          </h2>
         </Grid>
         <Grid item xs={3}>
-          <p>Presion: {props.weather.main.pressure}</p>
-          <p>Temp min:{props.weather.main.temp_min}</p>
-          <p>Sunrise:{sunrise.getHours()}</p>
+          <p>
+Presion:
+            {props.weather.main.pressure}
+          </p>
+          <p>
+Temp min:
+            {props.weather.main.temp_min}
+          </p>
+          <p>
+Sunrise:
+            {sunrise.getHours()}
+          </p>
         </Grid>
         <Grid item xs={3}>
-          <p>Humedad: {props.weather.main.humidity}%</p>
-          <p>Temp max: {props.weather.main.temp_max}</p>
-          <p>Sunset: {sunset.getHours()}</p>
+          <p>
+Humedad:
+            {props.weather.main.humidity}
+%
+          </p>
+          <p>
+Temp max:
+            {props.weather.main.temp_max}
+          </p>
+          <p>
+Sunset:
+            {sunset.getHours()}
+          </p>
         </Grid>
       </Grid>
     </div>
