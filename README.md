@@ -3,11 +3,14 @@
 ## Indice 
 
     1. Requisitos 
+
     2. Componentes
 
-        2.1 Current Container
+        2.1 Search
 
-        2.2 Current Forecast 
+        2.2 Current Container
+
+        2.3 Current Forecast 
 
     3. Bibliografía 
 
@@ -25,6 +28,11 @@ La siguiente imagen muestra como diseñamos la jerarquía de los componentes en 
 ![jerarquíaComponentes](/diagramas/arbolComponentes.png)
 
 Como podemos observar Home es una de las dos class components que tenemos, pero es la principal, ya que, que cuando llamamos a la función "render" en ``index.js`` le pedimos que renderice la componente Home. Esta componente va a ser la que contenga toda la App, dentro suyo se encuentran **Slide** y **Search**.
+
+### Search 
+
+En Search lo que vamos a hacer es manejar los eventos tales como OnClick, OnChange y por último OnSubmit. Onclick es cuando se apreta (se hace Click) en el buscador para comenzar a escribir. OnChange cada vez que se escribe una letra nueva en el buscador lo que se hace es hacer una *request*
+a la Api de open Weather para poder obtener todas las posibles ciudades que contengan ese nombre y de esta forma podemos hacer el **auto-completado** , esto lo hacemos con la función *promiseOptions*. Por último cuando cuando ocurre un evento de tipo OnSubmit, es decir, el usuario apreta enter, se hace una *request* a la Api con los datos ingresados por el usuario. En caso de que la *request* falle Home se encarga de generar una notificación para avisar que los datos ingresados son correctos. En el caso contrario la componente Search le devuelve el nombre a la componente Home para que esta pueda pedir los datos a la Api.
 
 ### Slide 
 
