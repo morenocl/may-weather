@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import '../css/forecast.css';
-import { days, urlImg } from '../settings.js';
+import { days, urlImg } from '../settings';
 
 function Forecast(props) {
   // today contiene el datallado cada 3 horas del dia.

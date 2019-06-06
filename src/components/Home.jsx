@@ -46,7 +46,7 @@ class Home extends React.Component {
     let check = true;
     let unmount = true;
 
-    if ('400' <= jsonWeather.cod && jsonWeather.cod < '500') { 
+    if (jsonWeather.cod >= '400' && jsonWeather.cod < '500') {
       const variant = 'error';
       this.props.enqueueSnackbar('City does not exist!', { variant });
       check = false;
