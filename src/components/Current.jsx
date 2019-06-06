@@ -21,7 +21,11 @@ function Current(props) {
           <h2>
             {props.weather.main.temp}
             {' '}
+<<<<<<< HEAD
 C°
+=======
+C
+>>>>>>> 559d9f0ff2162f67844a086212d3cc49f8dd8665
           </h2>
         </Grid>
         <Grid item xs={3}>

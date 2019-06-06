@@ -3,12 +3,12 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
+import ContentLoader from 'react-content-loader';
 import CurrentContainer from './CurrentContainer';
 import ForecastContainer from './ForecastContainer';
 import { types } from '../settings';
-import ContentLoader from 'react-content-loader';
 
-function TabContent({children}) {
+function TabContent({ children }) {
   return (
     <div className="tabContent">
       {children}
@@ -42,7 +42,7 @@ function Slide(props) {
 
   let content;
   if (props.data.loading) {
-    content = <Loader></Loader>
+    content = <Loader />;
   } else if (value === types.CURRENT) {
     content = (
       <CurrentContainer

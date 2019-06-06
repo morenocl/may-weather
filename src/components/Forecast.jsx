@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import '../css/forecast.css';
-import { days, urlImg } from '../settings.js';
+import { days, urlImg } from '../settings';
 
 function Forecast(props) {
   // today contiene el datallado cada 3 horas del dia.
@@ -20,7 +20,7 @@ function Forecast(props) {
   const date = (new Date(Number(today[0].dt) * 1000));
   const day = date.getDay();
   const fecha = `${date.getDate()}/${date.getMonth() + 1}`;
-  // const url = `${urlImg + today[3].weather[0].icon}.png`;
+  const url = `${urlImg + today[3].weather[0].icon}.png`;
 
   return (
     <Grid item sm>
@@ -35,7 +35,7 @@ function Forecast(props) {
           { fecha }
           {' '}
         </p>
-        {/* <img src={url} alt="Clima" /> */}
+        { <img src={url} alt="Clima" /> }
         <p>
           {Math.round(max)}
 °C
