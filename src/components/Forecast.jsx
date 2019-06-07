@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Popover from '@material-ui/core/Popover';
 import '../css/forecast.css';
 import { days, urlImg } from '../settings';
+import WeatherCard from './WeatherCard';
 
 function Forecast(props) {
   const { list, index } = props;
@@ -24,9 +26,21 @@ function Forecast(props) {
   const fecha = `${date.getDate()}/${date.getMonth() + 1}`;
   const url = `${urlImg + today[3].weather[0].icon}.png`;
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  function handleClick(event) {
+    setAnchorEl(event.currentTarget);
+  }
+
+  function handleClose() {
+    setAnchorEl(null);
+  }
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : null;
+
   return (
     <Grid item sm>
-      <Paper className="gridItem">
+      <Paper className="gridItem" onClick={handleClick}>
         <p>
           {' '}
           { days[day] }
@@ -46,6 +60,14 @@ function Forecast(props) {
           °C
         </p>
       </Paper>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+      >
+        <WeatherCard list={today} />
+      </Popover>
     </Grid>
   );
 }
