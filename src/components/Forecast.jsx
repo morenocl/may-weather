@@ -40,10 +40,10 @@ function Forecast(props) {
         { <img src={url} alt="Clima" /> }
         <p>
           {Math.round(max)}
-°C
+          °C
           {' '}
           {Math.round(min)}
-°C
+          °C
         </p>
       </Paper>
     </Grid>

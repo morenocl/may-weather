@@ -4,7 +4,7 @@ import './css/index.css';
 import Home from './components/Home';
 
 ReactDOM.render(
-    <Home />, document.getElementById('root')
+  <Home />, document.getElementById('root'),
 );
 
 module.hot.accept();

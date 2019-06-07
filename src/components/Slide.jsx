@@ -35,29 +35,29 @@ const Loader = () => (
 
 function Slide(props) {
   const [value, setValue] = React.useState(0);
-
+  const { loading, weather, forecast } = props;
   function handleChange(event, newValue) {
     setValue(newValue);
   }
 
   let content;
-  if (props.loading) {
+  if (loading) {
     content = <Loader />;
   } else if (value === types.CURRENT) {
     content = (
       <CurrentContainer
-        loading={props.loading}
-        weather={props.weather}
+        loading={loading}
+        weather={weather}
       />
     );
   } else if (value === types.FORECAST) {
-    content = <ForecastContainer forecast={props.forecast} />;
+    content = <ForecastContainer forecast={forecast} />;
   } else if (value === types.UVI) {
     content = <div>UVI IN PROCESS</div>;
   }
   return (
     <Box>
-      { props.loading && <LinearProgress /> }
+      { loading && <LinearProgress /> }
       <Tabs value={value} indicatorColor="primary" textColor="primary" onChange={handleChange}>
         <Tab className="tab" label="Current" />
         <Tab className="tab" label="Forecast" />
