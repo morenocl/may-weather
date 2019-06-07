@@ -8,7 +8,7 @@ function CurrentContainer(props) {
 }
 
 CurrentContainer.propTypes = {
-  weather: PropTypes.arrayOf(Object).isRequired,
+  weather: PropTypes.objectOf(Object).isRequired,
 };
 
 export default CurrentContainer;

@@ -78,8 +78,8 @@ TabContent.propTypes = {
 
 Slide.propTypes = {
   loading: PropTypes.bool.isRequired,
-  weather: PropTypes.arrayOf(Object).isRequired,
-  forecast: PropTypes.arrayOf(Object).isRequired,
+  weather: PropTypes.objectOf(Object).isRequired,
+  forecast: PropTypes.objectOf(Object).isRequired,
 };
 
 export default Slide;
