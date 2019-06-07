@@ -1,7 +1,5 @@
 # Proyecto MayWeather
 
-#En el README deben detallar los componentes de terceros que utilizaron, los pasos manuales deinstalación y ejecución (si los hubiere), configuraciones manuales, decisiones de diseño, etc.
-
 ## Indice 
 
 1. Requisitos 
@@ -72,11 +70,10 @@ Dentro de Forecast devolvemos otra grilla que contiene todos los datos (como en 
 
 #### Weather Card
 
-La grilla que devuelve Forecast contiene una componente **Paper**al cual le agregamos un evento OnClick
-que cuando sucede se instancia la componente *Popover*, la cual contiene a la componente Weather Card 
-a la cual le pasamos los datos cada 3 horas del respectivo día. La misma va a funcionar como un contenedor de 8 *Paper's*.
+La grilla que devuelve Forecast contiene una componente **Paper** al cual le agregamos un evento OnClick que cuando sucede se instancia la componente *Popover*, la cual contiene a la componente Weather Card a la cual le pasamos los datos cada 3 horas del respectivo día. La misma va a funcionar como un contenedor de 8 *Paper's*.
 
 ## Bibiografía 
 
 1. [Materials-UI](https://material-ui.com/)
 2. [React Select](https://github.com/JedWatson/react-select)
+3. [notistack](https://www.npmjs.com/package/notistack )
