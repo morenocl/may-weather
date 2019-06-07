@@ -104,4 +104,8 @@ Search.propTypes = {
   loading: PropTypes.bool,
 };
 
+CustomSearch.propTypes = {
+  loading: PropTypes.bool,
+};
+
 export default Search;

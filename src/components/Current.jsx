@@ -60,5 +60,8 @@ function Current(props) {
   );
 }
 
+Current.propTypes = {
+  weather: PropTypes.arrayOf(Object).isRequired,
+};
 
 export default Current;

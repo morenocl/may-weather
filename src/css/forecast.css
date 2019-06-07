@@ -1,3 +1,7 @@
 .gridItem{
     text-align: center;
 }
+
+.forecast {
+    padding: 10px;
+}

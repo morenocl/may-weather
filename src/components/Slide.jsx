@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -8,7 +9,8 @@ import CurrentContainer from './CurrentContainer';
 import ForecastContainer from './ForecastContainer';
 import { types } from '../settings';
 
-function TabContent({ children }) {
+function TabContent(props) {
+  const { children } = props;
   return (
     <div className="tabContent">
       {children}
@@ -51,7 +53,7 @@ function Slide(props) {
       />
     );
   } else if (value === types.FORECAST) {
-    content = <ForecastContainer forecast={forecast} />;
+    content = <ForecastContainer forecast={forecast} weather={weather}/>;
   } else if (value === types.UVI) {
     content = <div>UVI IN PROCESS</div>;
   }
@@ -69,5 +71,9 @@ function Slide(props) {
     </Box>
   );
 }
+
+TabContent.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Slide;

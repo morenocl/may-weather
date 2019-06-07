@@ -74,7 +74,7 @@ function Forecast(props) {
 
 Forecast.propTypes = {
   index: PropTypes.number.isRequired,
-  list: PropTypes.object.isRequired,
+  list: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default Forecast;
