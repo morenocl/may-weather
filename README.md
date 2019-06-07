@@ -18,11 +18,27 @@
 
 3. Bibliografía 
 
-## Requisitos
+## Requisito
+Antes de correr nuesta Web Aplication necestiamos instalar un par de cosas:
+
+CSS:
 ```
 npm i @babel/preset-env @babel/plugin-transform-runtime @babel/runtime --save-dev
 npm i css-loader style-loader --save-dev
+```
+
+Prop-Types:
+```
+npm install --save prop-types
+```
+
+Auto Completado para el buscador:
+```
 npm i - S react-select
+```
+
+Notificación:
+```
 npm i notistack
 ```
 
