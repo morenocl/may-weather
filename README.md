@@ -2,17 +2,19 @@
 
 ## Indice 
 
-    1. Requisitos 
+1. Requisitos 
 
-    2. Componentes
+2. Componentes
 
-        2.1 Search
+    2.1 Search
 
-        2.2 Current Container
+    2.2 Current Container
 
-        2.3 Current Forecast 
+    2.3 Current Forecast 
 
-    3. Bibliografía 
+    2.4 Weather Card
+
+3. Bibliografía 
 
 ## Requisitos
 ```
@@ -51,8 +53,9 @@ A diferencia de Current Container, Forecast Container tiene un par de cosas más
 
 Dentro de Forecast devolvemos otra grilla que contiene todos los datos (como en Currernt), pero como la Api no nos proporciona la temperatura máxima ni la mínima, decidimos utilizar una *arrow function* para recorrer todas las temperaturas de ese día y poder encontrar esos valores.
 
+#### Weather Card
 
 ## Bibiografía 
 
-    1. [Materials-UI](https://material-ui.com/)
+1. [Materials-UI](https://material-ui.com/)
 
