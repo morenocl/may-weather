@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import Fade from '@material-ui/core/Fade';
 import Box from '@material-ui/core/Box';
 import { SnackbarProvider, withSnackbar } from 'notistack';
+import { urlImgLogo } from '../settings';
 import Search from './Search';
 import Slide from './Slide';
 import Api from '../api';
@@ -24,8 +26,9 @@ class Home extends React.Component {
   }
 
   shiftLoading() {
+    const { loading } = this.state;
     this.setState({
-      loading: !this.state.loading,
+      loading: !loading,
     });
   }
 
@@ -37,6 +40,7 @@ class Home extends React.Component {
   }
 
   async updateWeather(newCity) {
+    const { enqueueSnackbar } = this.props;
     this.shiftLoading();
     const api = new Api();
     const responseWeather = await api.getWeather(newCity);
@@ -48,7 +52,7 @@ class Home extends React.Component {
 
     if (jsonWeather.cod >= '400' && jsonWeather.cod < '500') {
       const variant = 'error';
-      this.props.enqueueSnackbar('City does not exist!', { variant });
+      enqueueSnackbar('City does not exist!', { variant });
       check = false;
       unmount = false;
     }
@@ -68,38 +72,42 @@ class Home extends React.Component {
   }
 
   handleChange() {
+    const { checked } = this.state;
     this.setState({
-      checked: !this.state.checked,
+      checked: !checked,
     });
   }
 
   render() {
-    const { checked } = this.state;
+    const { checked, loading, unMount } = this.state;
     return (
       <div>
         <Box className="logo">
-          <img src="https://static1.squarespace.com/static/5931d6a5b8a79b4f41d4eba6/t/593998c829687fc903474f9d/1551899707003/" alt="logo" className="media" />
+          <img src={urlImgLogo} alt="logo" className="media" />
         </Box>
         <Box className="Search">
           <Search
-            shiftLoading={this.shiftLoading}
             updateCity={this.updateCity}
-            loading={this.state.loading}
+            loading={loading}
           />
         </Box>
-        { this.state.unMount
+        { unMount
         && (
         <Fade in={checked}>
           <Card className="Home">
-            <Slide data={this.state} />
+            <Slide {...this.state} />
           </Card>
         </Fade>
         )
-      }
+        }
       </div>
     );
   }
 }
+
+Home.propTypes = {
+  enqueueSnackbar: PropTypes.func.isRequired,
+};
 
 const App = withSnackbar(Home);
 

@@ -11,9 +11,12 @@
     "@material-ui/icons": "^4.0.1",
     "css-loader": "^2.1.1",
     "material-ui-selectfield": "^1.0.24",
+    "notistack": "^0.8.6",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-content-loader": "^4.2.1",
     "react-dom": "^16.8.6",
+    "react-select": "^3.0.4",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
   },

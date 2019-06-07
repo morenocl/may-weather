@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
@@ -34,8 +35,9 @@ const AsyncSelectStyle = {
 };
 
 function CustomSearch(props) {
+  const { loading, onChange } = props;
   let icon;
-  if (props.loading) {
+  if (loading) {
     icon = <CircularProgress size={24} />;
   } else {
     icon = <SearchIcon />;
@@ -45,7 +47,7 @@ function CustomSearch(props) {
       <AsyncSelect
         className="input"
         placeholder="Seleccionar ciudad"
-        onChange={props.onChange}
+        onChange={onChange}
         loadOptions={promiseOptions}
         cacheOptions
         defaultOptions
@@ -64,19 +66,16 @@ class Search extends React.Component {
     super(props);
     this.state = {
       search: '',
-      loading: props.loading,
     };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ loading: nextProps.loading });
-  }
-
   handleSubmit(event) {
+    const { updateCity } = this.props;
+    const { search } = this.state;
     event.preventDefault();
-    this.props.updateCity(this.state.search);
+    updateCity(search);
   }
 
   handleOnChange(newCity) {
@@ -84,18 +83,25 @@ class Search extends React.Component {
   }
 
   render() {
+    const { search } = this.state;
+    const { loading } = this.props;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <CustomSearch
-            value={this.state.value}
+            value={search}
             onChange={this.handleOnChange}
-            loading={this.state.loading}
+            loading={loading}
           />
         </form>
       </div>
     );
   }
 }
+
+Search.propTypes = {
+  search: PropTypes.string,
+  loading: PropTypes.bool,
+};
 
 export default Search;
