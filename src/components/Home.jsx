@@ -105,7 +105,9 @@ class Home extends React.Component {
   }
 }
 
-
+Home.propTypes = {
+  enqueueSnackbar: PropTypes.func.isRequired,
+};
 
 const App = withSnackbar(Home);
 

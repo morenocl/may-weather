@@ -53,7 +53,7 @@ function Slide(props) {
       />
     );
   } else if (value === types.FORECAST) {
-    content = <ForecastContainer forecast={forecast} weather={weather}/>;
+    content = <ForecastContainer forecast={forecast} weather={weather} />;
   } else if (value === types.UVI) {
     content = <div>UVI IN PROCESS</div>;
   }
@@ -74,6 +74,12 @@ function Slide(props) {
 
 TabContent.propTypes = {
   children: PropTypes.node.isRequired,
+};
+
+Slide.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  weather: PropTypes.arrayOf(Object).isRequired,
+  forecast: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default Slide;

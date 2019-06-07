@@ -100,12 +100,13 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  search: PropTypes.string,
-  loading: PropTypes.bool,
+  updateCity: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 CustomSearch.propTypes = {
-  loading: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Search;

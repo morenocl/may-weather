@@ -12,8 +12,7 @@ function WheatherCard(prop) {
     if (elem.main.temp < min) min = elem.main.temp;
   });
 
-  let content;
-  content = list.map((element, key) => {
+  const content = list.map((element) => {
     const tiempo = (new Date(Number(element.dt) * 1000));
     const hora = tiempo.getHours();
     const minutos = tiempo.getMinutes();
@@ -22,26 +21,72 @@ function WheatherCard(prop) {
     const presion = element.main.pressure;
     const humedad = element.main.humidity;
     const wind = element.wind.speed;
-    // La siguiente linea no estoy seguro si es correcta. 
+    // La siguiente linea no estoy seguro si es correcta.
     // ¿de donde obtener la probabilidad de lluvia sino?
     const rain = element.clouds.all;
     const url = `${urlImg + element.weather[0].icon}.png`;
     return (
       <Paper>
-        <p> {hora}:{minutos} - {hora+3}:{minutos} </p>
+        <p>
+          {' '}
+          {hora}
+:
+          {minutos}
+          {' '}
+-
+          {' '}
+          {hora + 3}
+:
+          {minutos}
+          {' '}
+        </p>
         { <img src={url} alt="Clima" /> }
-        <p> {temperatura}C° {clima} </p>
-        <p> Preassure: {presion}  Humedad: {humedad} </p>
-        <p> Wind: {wind}  Rain: {rain} </p>
-        <p> Min Temp.: {min}  Max Temp.: {max} </p>
+        <p>
+          {' '}
+          {temperatura}
+C°
+          {' '}
+          {clima}
+          {' '}
+        </p>
+        <p>
+          {' '}
+Preassure:
+          {presion}
+          {' '}
+Humedad:
+          {humedad}
+          {' '}
+
+        </p>
+        <p>
+          {' '}
+Wind:
+          {wind}
+          {' '}
+Rain:
+          {rain}
+          {' '}
+
+        </p>
+        <p>
+          {' '}
+Min Temp.:
+          {min}
+          {' '}
+Max Temp.:
+          {max}
+          {' '}
+
+        </p>
       </Paper>
-    )
+    );
   });
   return (
     <div>
       {content}
     </div>
-  )
+  );
 }
 
 export default WheatherCard;
