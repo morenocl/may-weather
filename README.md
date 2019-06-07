@@ -22,8 +22,8 @@
 ```
 npm i @babel/preset-env @babel/plugin-transform-runtime @babel/runtime --save-dev
 npm i css-loader style-loader --save-dev
-Npm i - S react-select
-Npm i notistack
+npm i - S react-select
+npm i notistack
 ```
 
 ## Componentes
@@ -56,7 +56,11 @@ Dentro de Forecast devolvemos otra grilla que contiene todos los datos (como en 
 
 #### Weather Card
 
+La grilla que devuelve Forecast contiene una componente **Paper**al cual le agregamos un evento OnClick
+que cuando sucede se instancia la componente *Popover*, la cual contiene a la componente Weather Card 
+a la cual le pasamos los datos cada 3 horas del respectivo día. La misma va a funcionar como un contenedor de 8 *Paper's*.
+
 ## Bibiografía 
 
 1. [Materials-UI](https://material-ui.com/)
-
+2. [React Select](https://github.com/JedWatson/react-select)
